@@ -5,10 +5,6 @@ class GitHub {
     this.repos_count = 5;
     this.repos_sort = "created: asc";
   }
-
-  test() {
-    console.log("test");
-  }
 }
 
 export const gitHub = new GitHub();
