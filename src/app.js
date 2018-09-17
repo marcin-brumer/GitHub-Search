@@ -12,7 +12,17 @@ searchBtn.addEventListener("click", e => {
   const inputText = searchUser.value;
 
   if (inputText !== "") {
-    // Display profile
+    // Make HTTP call
+    gitHub.getUsers(inputText).then(data => {
+      if (data.profile.message === "Not Found") {
+        // Show alert
+        ui.showAlert("User not found");
+      } else {
+        // Show profile and repos
+        ui.showProfile(data.profile);
+        ui.showRepos(data.repos);
+      }
+    });
   }
 
   e.preventDefault();
