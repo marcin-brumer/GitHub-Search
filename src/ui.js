@@ -3,6 +3,7 @@ class UI {
     this.profile = document.getElementById("profile");
   }
 
+  // Display profile
   showProfile(user) {
     // Clear remaining alerts
     this.clearAlert();
@@ -18,7 +19,7 @@ class UI {
           </div> 
           <div class="col-md-9">
             <div class="d-flex justify-content-center align-items-center flex-wrap mb-4">
-              <span class="badge badge-pill badge-primary p-2 mr-2 mb-2">Public repos: ${
+              <span class="badge badge-pill badge-warning p-2 mr-2 mb-2">Public repos: ${
                 user.public_repos
               }</span>
               <span class="badge badge-pill badge-light p-2 mr-2 mb-2">Public Gists: ${
@@ -54,6 +55,36 @@ class UI {
       <h3 class="page-heading mb-3">Latest Repos:</h3>
       <div id="repos"></div>
     `;
+  }
+
+  // Display repos
+  showRepos(repos) {
+    let output = "";
+
+    repos.forEach(repo => {
+      output += `
+        <div class="card card-body mb-2">
+          <div class="row">
+            <div class="col-md-6 my-1">
+              <a href="${repo.html_url}">${repo.name}</a>
+            </div>
+            <div class="col-md-6 my-1">
+              <span class="badge badge-pill badge-warning p-2 mr-2">Stars: ${
+                repo.stargazers_count
+              }</span>
+              <span class="badge badge-pill badge-success p-2 mr-2">Watchers: ${
+                repo.watchers_count
+              }</span>
+              <span class="badge badge-pill badge-info p-2 mr-2">Forks: ${
+                repo.forks_count
+              }</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById("repos").innerHTML = output;
   }
 
   showAlert(message) {
