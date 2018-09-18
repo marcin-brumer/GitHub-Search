@@ -3,6 +3,59 @@ class UI {
     this.profile = document.getElementById("profile");
   }
 
+  showProfile(user) {
+    // Clear remaining alerts
+    this.clearAlert();
+    // Insert data to profile container
+    this.profile.innerHTML = `
+      <div class="card card-body mb-3">
+        <div class="row">
+          <div class="col-md-3">
+            <img class="img-fluid mb-4" src="${user.avatar_url}">
+            <a href="${
+              user.html_url
+            }" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
+          </div> 
+          <div class="col-md-9">
+            <div class="d-flex justify-content-center align-items-center flex-wrap mb-4">
+              <span class="badge badge-pill badge-primary p-2 mr-2 mb-2">Public repos: ${
+                user.public_repos
+              }</span>
+              <span class="badge badge-pill badge-light p-2 mr-2 mb-2">Public Gists: ${
+                user.public_gists
+              }</span>
+              <span class="badge badge-pill badge-success p-2 mr-2 mb-2">Followers: ${
+                user.followers
+              }</span>
+              <span class="badge badge-pill badge-info p-2 mr-2 mb-2">Following: ${
+                user.following
+              }</span>
+            </div>
+            <ul class="list-group border-light">
+              <li class="list-group-item d-flex justify-content-between align-items-center border-light">
+                Email: ${user.email}
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center border-light">
+                Company: ${user.company}
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center border-light">
+                Website/Blog: ${user.blog}
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center border-light">
+                Location: ${user.location}
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center border-light">
+                Member Since: ${user.created_at}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h3 class="page-heading mb-3">Latest Repos:</h3>
+      <div id="repos"></div>
+    `;
+  }
+
   showAlert(message) {
     // Clear remaining alerts
     this.clearAlert();
