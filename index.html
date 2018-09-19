@@ -8,16 +8,29 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
-  <title>My JavaScript App</title>
+  <title>GitHub Search</title>
 </head>
 
-<body>
+<body id="users">
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
       <div class="container">
-        <a class="navbar-brand" href="#"><i class="fab fa-github d-inline-block mr-2"></i>GitHub Search</a>
-      </div>
+        <a class="navbar-brand" href="index.html"><i class="fab fa-github d-inline-block mr-2"></i>GitHub Search</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">USERS <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="organizations.html">ORGANIZATIONS</a>
+            </li>
+          </ul>
+        </div>
     </nav>
   </header>
 
@@ -28,7 +41,7 @@
         <p class="lead">Enter a username to fetch a user profile and repos</p>
         <form role="form" class="d-flex justify-content-around">
           <input type="text" id="searchUser" class="form-control mr-2" placeholder="GitHub Username...">
-          <button type="submit" class="btn btn-primary" id="searchBtn">Search</button>
+          <button type="submit" class="btn btn-primary" id="searchUsersBtn">Search</button>
         </form>
       </div>
       <br>
