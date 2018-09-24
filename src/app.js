@@ -1,28 +1,49 @@
 import { ui } from "./ui";
 import { gitHub } from "./github";
 
-// Search input
+// Search inputs
 const searchUser = document.getElementById("searchUser");
+// Search button
+const searchUsersBtn = document.getElementById("searchUsersBtn");
 
-const searchBtn = document.getElementById("searchBtn");
+// Search users event listener
+searchUsersBtn.addEventListener("click", e => {
+  // Body ID
+  let bodyID = document.querySelector("body").id;
 
-// Search input event listener
-searchBtn.addEventListener("click", e => {
   // Get input
   const inputText = searchUser.value;
 
-  if (inputText !== "") {
-    // Make HTTP call
-    gitHub.getUsers(inputText).then(data => {
-      if (data.profile.message === "Not Found") {
-        // Show alert
-        ui.showAlert("User not found");
-      } else {
-        // Show profile and repos
-        ui.showProfile(data.profile);
-        ui.showRepos(data.repos);
-      }
-    });
+  if (bodyID === "users") {
+    if (inputText !== "") {
+      // Make HTTP call
+      gitHub.getUsers(inputText).then(data => {
+        if (data.profile.message === "Not Found") {
+          // Show alert
+          ui.showAlert("User not found");
+        } else {
+          // Show profile and repos
+          ui.showProfile(data.profile);
+          ui.showRepos(data.repos);
+        }
+      });
+    }
+  }
+
+  if (bodyID === "organizations") {
+    if (inputText !== "") {
+      // Make HTTP call
+      gitHub.getOrganizations(inputText).then(data => {
+        if (data.profile.message === "Not Found") {
+          // Show alert
+          ui.showAlert("Organization not found");
+        } else {
+          // Show profile and repos
+          ui.showProfile(data.profile);
+          ui.showRepos(data.repos);
+        }
+      });
+    }
   }
 
   e.preventDefault();
