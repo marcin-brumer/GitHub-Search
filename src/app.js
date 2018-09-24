@@ -22,9 +22,8 @@ searchUsersBtn.addEventListener("click", e => {
           // Show alert
           ui.showAlert("User not found");
         } else {
-          // Show profile and repos
-          ui.showProfile(data.profile);
-          ui.showRepos(data.repos);
+          // Show User
+          ui.showUser(data);
         }
       });
     }
@@ -38,9 +37,8 @@ searchUsersBtn.addEventListener("click", e => {
           // Show alert
           ui.showAlert("Organization not found");
         } else {
-          // Show profile and repos
-          ui.showProfile(data.profile);
-          ui.showRepos(data.repos);
+          // Show Organization
+          ui.showOrganization(data);
         }
       });
     }

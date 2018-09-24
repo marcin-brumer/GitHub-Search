@@ -3,6 +3,18 @@ class UI {
     this.profile = document.getElementById("profile");
   }
 
+  // Display User
+  showUser(data) {
+    this.showProfile(data.profile);
+    this.showRepos(data.repos);
+  }
+
+  // Display User
+  showOrganization(data) {
+    this.showProfile(data.profile);
+    this.showRepos(data.repos);
+  }
+
   // Display profile
   showProfile(user) {
     // Clear remaining alerts
@@ -34,10 +46,10 @@ class UI {
             </div>
             <ul class="list-group border-light">
               <li class="list-group-item d-flex justify-content-between align-items-center border-light">
-                Email: ${user.email}
+                Name: ${user.name}
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center border-light">
-                Company: ${user.company}
+                Email: ${user.email}
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center border-light">
                 Website/Blog: ${user.blog}
@@ -52,14 +64,14 @@ class UI {
           </div>
         </div>
       </div>
-      <h3 class="page-heading mb-3">Latest Repos:</h3>
       <div id="repos"></div>
+      <div id="people"></div>
     `;
   }
 
   // Display repos
   showRepos(repos) {
-    let output = "";
+    let output = `<h3 class="page-heading mb-3">Latest Repos:</h3>`;
 
     repos.forEach(repo => {
       output += `
