@@ -46,13 +46,22 @@ class GitHub {
       }`
     );
 
+    const membersResponse = await fetch(
+      `https://api.github.com/orgs/${organization}/members?client_id=${
+        this.client_id
+      }&client_secret=${this.client_secret}`
+    );
+
     const profile = await profileResponse.json();
 
     const repos = await reposResponse.json();
 
+    const members = await membersResponse.json();
+
     return {
       profile,
-      repos
+      repos,
+      members
     };
   }
 }
