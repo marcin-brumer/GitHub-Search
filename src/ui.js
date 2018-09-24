@@ -13,6 +13,7 @@ class UI {
   showOrganization(data) {
     this.showProfile(data.profile);
     this.showRepos(data.repos);
+    this.showMembers(data.members);
   }
 
   // Display profile
@@ -21,7 +22,7 @@ class UI {
     this.clearAlert();
     // Insert data to profile container
     this.profile.innerHTML = `
-      <div class="card card-body mb-3">
+      <div class="card card-body mb-5">
         <div class="row">
           <div class="col-md-3">
             <img class="img-fluid mb-4" src="${user.avatar_url}">
@@ -64,8 +65,8 @@ class UI {
           </div>
         </div>
       </div>
-      <div id="repos"></div>
-      <div id="people"></div>
+      <div id="repos" class="mb-5"></div>
+      <div id="members"></div>
     `;
   }
 
@@ -97,6 +98,26 @@ class UI {
     });
 
     document.getElementById("repos").innerHTML = output;
+  }
+
+  showMembers(members) {
+    const heading = `<h3 class="page-heading mb-3">Members:</h3>`;
+    let output = "";
+
+    members.forEach(member => {
+      output += `
+        <div class="mb-2">
+          <a href="${
+            member.html_url
+          }"><img class="img-fluid mr-2" width="95" src="${
+        member.avatar_url
+      }"></a>
+        </div>
+      `;
+    });
+
+    const container = `<div class="card card-body d-flex flex-row justify-content-center flex-wrap">${output}</div>`;
+    document.getElementById("members").innerHTML = heading + container;
   }
 
   showAlert(message) {
